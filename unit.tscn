@@ -1,0 +1,321 @@
+[gd_scene load_steps=31 format=3 uid="uid://bchd85iu6yxcy"]
+
+[ext_resource type="Script" path="res://unit.gd" id="1_8nypa"]
+[ext_resource type="Shader" path="res://unit.gdshader" id="2_fp2yb"]
+[ext_resource type="SpriteFrames" uid="uid://5uxqtes0jmx0" path="res://sprites/unitframes/leviathan.tres" id="3_lr2d0"]
+[ext_resource type="Texture2D" uid="uid://d0adk43uuxv1i" path="res://sprites/551_marker_marker.png" id="4_11pe6"]
+[ext_resource type="Texture2D" uid="uid://dg2dwkubk5uhe" path="res://sprites/296_wm_resources_wm_resources.png" id="5_3adq5"]
+[ext_resource type="FontFile" uid="uid://c0cavbidfs63h" path="res://Silver.ttf" id="6_ea4nt"]
+[ext_resource type="Texture2D" uid="uid://bmvwqcae5p6jq" path="res://sprites/448_wm_build_cancel_wm_build_cancel.png" id="7_ci4jm"]
+[ext_resource type="Texture2D" uid="uid://bfl0dyagkt7rs" path="res://sprites/123_wm_build_up_wm_build_up.png" id="7_r0b5n"]
+[ext_resource type="Texture2D" uid="uid://bw71p4qmxfbeo" path="res://sprites/184_wm_build_down_wm_build_down.png" id="8_1vff2"]
+[ext_resource type="Texture2D" uid="uid://3oqry5vcvai3" path="res://sprites/567_wm_build_side_wm_build_side.png" id="9_aqb0u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6rsb"]
+resource_local_to_scene = true
+shader = ExtResource("2_fp2yb")
+shader_parameter/aacolor = Color(0, 1, 1, 1)
+shader_parameter/sleep = 0.0
+shader_parameter/oldcolor = Color(1, 0.560784, 0.521569, 1)
+shader_parameter/newcolor = Color(0, 1, 1, 1)
+shader_parameter/oldcolor1 = Color(1, 0.564706, 0.521569, 1)
+shader_parameter/newcolor1 = Color(0.470588, 0.572549, 0.937255, 1)
+shader_parameter/oldcolor2 = Color(0.913725, 0.2, 0.180392, 1)
+shader_parameter/newcolor2 = Color(0.141176, 0.384314, 0.815686, 1)
+shader_parameter/oldcolor3 = Color(0.666667, 0.0862745, 0.172549, 1)
+shader_parameter/newcolor3 = Color(0.0980392, 0.243137, 0.694118, 1)
+shader_parameter/oldcolor4 = Color(0.4, 0.101961, 0.368627, 1)
+shader_parameter/newcolor4 = Color(0.0705882, 0.133333, 0.396078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qf8u"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnumq"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4b3t"]
+bg_color = Color(0.0745098, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o127i"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n87tq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_unnpp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbj5i"]
+atlas = ExtResource("7_r0b5n")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm6to"]
+atlas = ExtResource("7_r0b5n")
+region = Rect2(168, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7au4f"]
+atlas = ExtResource("7_r0b5n")
+region = Rect2(112, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dwin"]
+atlas = ExtResource("8_1vff2")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6iwa"]
+atlas = ExtResource("8_1vff2")
+region = Rect2(168, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7170j"]
+atlas = ExtResource("8_1vff2")
+region = Rect2(112, 0, 56, 56)
+
+[sub_resource type="BitMap" id="BitMap_vlyd3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56dn1"]
+atlas = ExtResource("9_aqb0u")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lltmu"]
+atlas = ExtResource("9_aqb0u")
+region = Rect2(168, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gq1d7"]
+atlas = ExtResource("9_aqb0u")
+region = Rect2(112, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qa4i"]
+atlas = ExtResource("7_ci4jm")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykfs6"]
+atlas = ExtResource("7_ci4jm")
+region = Rect2(168, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e2bu"]
+atlas = ExtResource("7_ci4jm")
+region = Rect2(112, 0, 56, 56)
+
+[node name="unit" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_8nypa")
+metadata/_edit_lock_ = true
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_s6rsb")
+sprite_frames = ExtResource("3_lr2d0")
+animation = &"idle_e"
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 1
+offset_left = 6.0
+offset_top = 13.0
+offset_right = 23.0
+offset_bottom = 22.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4qf8u")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+z_index = 1
+offset_left = 19.0
+offset_top = 14.0
+offset_right = 22.0
+offset_bottom = 21.0
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_wnumq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p4b3t")
+max_value = 25.0
+step = 1.0
+value = 25.0
+fill_mode = 3
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="ProgressBar2" type="ProgressBar" parent="."]
+z_index = 1
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 18.0
+offset_bottom = 21.0
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_wnumq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p4b3t")
+min_value = 25.0
+max_value = 50.0
+step = 1.0
+value = 50.0
+fill_mode = 3
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="ProgressBar3" type="ProgressBar" parent="."]
+z_index = 1
+offset_left = 11.0
+offset_top = 14.0
+offset_right = 14.0
+offset_bottom = 21.0
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_wnumq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p4b3t")
+min_value = 50.0
+max_value = 75.0
+step = 1.0
+value = 75.0
+fill_mode = 3
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="ProgressBar4" type="ProgressBar" parent="."]
+z_index = 1
+offset_left = 7.0
+offset_top = 14.0
+offset_right = 10.0
+offset_bottom = 21.0
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_o127i")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p4b3t")
+min_value = 75.0
+step = 1.0
+value = 80.0
+fill_mode = 3
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="marker" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_11pe6")
+metadata/_edit_lock_ = true
+
+[node name="Resourcelab" type="Panel" parent="."]
+visible = false
+z_index = 2
+offset_left = -28.0
+offset_right = 28.0
+offset_bottom = 26.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n87tq")
+metadata/_edit_lock_ = true
+
+[node name="296WmResourcesWmResources" type="Sprite2D" parent="Resourcelab"]
+position = Vector2(28, 14)
+texture = ExtResource("5_3adq5")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Resourcelab"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 6.0
+offset_right = 52.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("6_ea4nt")
+theme_override_font_sizes/font_size = 19
+text = "0
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+z_index = 10
+offset_left = -27.0
+offset_top = -27.0
+offset_right = 27.0
+offset_bottom = 27.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_unnpp")
+metadata/_edit_lock_ = true
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = -27.0
+offset_top = -27.0
+offset_right = 27.0
+offset_bottom = 27.0
+focus_mode = 0
+mouse_filter = 1
+
+[node name="wmbuild" type="Control" parent="."]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="up" type="TextureButton" parent="wmbuild"]
+visible = false
+layout_mode = 0
+offset_left = -28.0
+offset_top = -56.0
+offset_right = 28.0
+focus_mode = 0
+texture_normal = SubResource("AtlasTexture_mbj5i")
+texture_pressed = SubResource("AtlasTexture_lm6to")
+texture_hover = SubResource("AtlasTexture_7au4f")
+
+[node name="down" type="TextureButton" parent="wmbuild"]
+visible = false
+layout_mode = 0
+offset_left = -28.0
+offset_right = 28.0
+offset_bottom = 56.0
+focus_mode = 0
+texture_normal = SubResource("AtlasTexture_0dwin")
+texture_pressed = SubResource("AtlasTexture_p6iwa")
+texture_hover = SubResource("AtlasTexture_7170j")
+texture_click_mask = SubResource("BitMap_vlyd3")
+
+[node name="left" type="TextureButton" parent="wmbuild"]
+visible = false
+layout_mode = 0
+offset_left = -56.0
+offset_top = -28.0
+offset_bottom = 28.0
+focus_mode = 0
+texture_normal = SubResource("AtlasTexture_56dn1")
+texture_pressed = SubResource("AtlasTexture_lltmu")
+texture_hover = SubResource("AtlasTexture_gq1d7")
+
+[node name="right" type="TextureButton" parent="wmbuild"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 28.0
+offset_right = 112.0
+offset_bottom = 84.0
+scale = Vector2(-1, -1)
+focus_mode = 0
+texture_normal = SubResource("AtlasTexture_56dn1")
+texture_pressed = SubResource("AtlasTexture_lltmu")
+texture_hover = SubResource("AtlasTexture_gq1d7")
+
+[node name="cancel" type="TextureButton" parent="wmbuild"]
+visible = false
+layout_mode = 0
+offset_left = -28.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = 28.0
+focus_mode = 0
+texture_normal = SubResource("AtlasTexture_0qa4i")
+texture_pressed = SubResource("AtlasTexture_ykfs6")
+texture_hover = SubResource("AtlasTexture_7e2bu")
+
+[connection signal="mouse_entered" from="Panel2" to="." method="_on_panel_2_mouse_entered"]
+[connection signal="mouse_exited" from="Panel2" to="." method="_on_panel_2_mouse_exited"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="wmbuild/up" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="wmbuild/down" to="." method="_on_down_pressed"]
+[connection signal="pressed" from="wmbuild/left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="wmbuild/right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="wmbuild/cancel" to="." method="_on_cancel_pressed"]

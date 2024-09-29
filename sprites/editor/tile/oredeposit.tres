@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bmdi0hooyi01o"]
+
+[ext_resource type="Texture2D" uid="uid://cdgnw0nvyml8w" path="res://sprites/terrain/oredeposit.png" id="1_ydo53"]
+
+[resource]
+atlas = ExtResource("1_ydo53")
+region = Rect2(0, 0, 56, 56)

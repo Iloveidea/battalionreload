@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1yw6le2i0pq5"]
+
+[ext_resource type="Script" path="res://building.gd" id="1_docy4"]
+[ext_resource type="Shader" path="res://building.gdshader" id="2_ah40t"]
+[ext_resource type="Texture2D" uid="uid://bdbbpujpa2mlk" path="res://sprites/building/571_aircontrol_aircontrol.png" id="2_qhw7k"]
+[ext_resource type="Texture2D" uid="uid://d0adk43uuxv1i" path="res://sprites/551_marker_marker.png" id="3_477qm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbyrx"]
+resource_local_to_scene = true
+shader = ExtResource("2_ah40t")
+shader_parameter/aacolor = Color(0.4, 0.101961, 0.368627, 1)
+shader_parameter/sleep = 0.0
+shader_parameter/oldcolor = Color(1, 0.56, 0.52, 1)
+shader_parameter/newcolor = Color(0, 1, 1, 1)
+shader_parameter/oldcolor1 = Color(0.933333, 0.882353, 0.611765, 1)
+shader_parameter/newcolor1 = Color(0.933333, 0.882353, 0.611765, 1)
+shader_parameter/oldcolor2 = Color(0.694118, 0.678431, 0.482353, 1)
+shader_parameter/newcolor2 = Color(0.694118, 0.678431, 0.482353, 1)
+shader_parameter/oldcolor3 = Color(0.501961, 0.4, 0.407843, 1)
+shader_parameter/newcolor3 = Color(0.501961, 0.4, 0.407843, 1)
+shader_parameter/oldcolor4 = Color(0.266667, 0.337255, 0.254902, 1)
+shader_parameter/newcolor4 = Color(0.266667, 0.337255, 0.254902, 1)
+shader_parameter/oldcolor5 = Color(0.678431, 0.717647, 0.666667, 1)
+shader_parameter/newcolor5 = Color(0.678431, 0.717647, 0.666667, 1)
+shader_parameter/oldcolor6 = Color(0.490196, 0.6, 0.541176, 1)
+shader_parameter/newcolor6 = Color(0.490196, 0.6, 0.541176, 1)
+shader_parameter/oldcolor7 = Color(0.372549, 0.435294, 0.396078, 1)
+shader_parameter/newcolor7 = Color(0.372549, 0.435294, 0.396078, 1)
+shader_parameter/oldcolor8 = Color(0.137255, 0.231373, 0.329412, 1)
+shader_parameter/newcolor8 = Color(0.137255, 0.231373, 0.329412, 1)
+
+[node name="building" type="Node2D"]
+script = ExtResource("1_docy4")
+
+[node name="sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bbyrx")
+texture = ExtResource("2_qhw7k")
+
+[node name="marker" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_477qm")

@@ -1,0 +1,158 @@
+[gd_scene load_steps=6 format=3 uid="uid://6yrj06q00wp4"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_n1b0w"]
+[ext_resource type="PackedScene" uid="uid://dhmmbu1l4ku2k" path="res://terrainmap.tscn" id="2_sbj6k"]
+[ext_resource type="Script" path="res://tileinformationui.gd" id="3_uo1f3"]
+[ext_resource type="Script" path="res://controllers.gd" id="3_xfx7t"]
+[ext_resource type="Script" path="res://turnui.gd" id="4_28a44"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_n1b0w")
+
+[node name="terrainmap" parent="." instance=ExtResource("2_sbj6k")]
+
+[node name="line" type="Line2D" parent="."]
+points = PackedVector2Array(161, 98, 873, 137, 763, 452, 199, 389)
+closed = true
+width = 5.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="building" type="Node2D" parent="."]
+
+[node name="controllers" type="Node2D" parent="."]
+script = ExtResource("3_xfx7t")
+
+[node name="movetile" type="Node2D" parent="controllers"]
+
+[node name="pathline" type="Line2D" parent="controllers"]
+visible = false
+points = PackedVector2Array(229, 10, 415, 13)
+default_color = Color(1, 1, 1, 0.419608)
+
+[node name="cursor" type="Node2D" parent="controllers"]
+
+[node name="Line2D" type="Line2D" parent="controllers/cursor"]
+points = PackedVector2Array(-20, -20, 18, 21, 21, -23, -19, 18)
+default_color = Color(1, 0, 0.133333, 0.392157)
+
+[node name="unit" type="Node2D" parent="."]
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="tileinformationui" type="Control" parent="Camera"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("3_uo1f3")
+
+[node name="terrainui" type="Panel" parent="Camera/tileinformationui"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 480.0
+offset_right = 742.0
+offset_bottom = 545.0
+
+[node name="terrainmap" parent="Camera/tileinformationui/terrainui" instance=ExtResource("2_sbj6k")]
+position = Vector2(2, 2)
+
+[node name="TileMap" parent="Camera/tileinformationui/terrainui/terrainmap" index="0"]
+position = Vector2(3, 2)
+layer_0/tile_data = PackedInt32Array(0, 0, 0)
+
+[node name="building" type="Control" parent="Camera/tileinformationui/terrainui"]
+anchors_preset = 0
+offset_left = 33.0
+offset_top = 30.0
+offset_right = 73.0
+offset_bottom = 70.0
+
+[node name="Label" type="Label" parent="Camera/tileinformationui/terrainui"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 5.0
+offset_right = 126.0
+offset_bottom = 28.0
+text = "111111"
+
+[node name="Label2" type="Label" parent="Camera/tileinformationui/terrainui"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 392.0
+offset_bottom = 55.0
+text = "22222222222222222222222222222222222"
+
+[node name="unitui" type="Panel" parent="Camera/tileinformationui"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 554.0
+offset_right = 743.0
+offset_bottom = 620.0
+
+[node name="unit" type="Control" parent="Camera/tileinformationui/unitui"]
+anchors_preset = 0
+offset_left = 33.0
+offset_top = 30.0
+offset_right = 73.0
+offset_bottom = 70.0
+
+[node name="Label" type="Label" parent="Camera/tileinformationui/unitui"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 5.0
+offset_right = 126.0
+offset_bottom = 28.0
+text = "111111"
+
+[node name="Label2" type="Label" parent="Camera/tileinformationui/unitui"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 392.0
+offset_bottom = 55.0
+text = "22222222222222222222222222222222222"
+
+[node name="turnui" type="Control" parent="Camera"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("4_28a44")
+
+[node name="Panel" type="Panel" parent="Camera/turnui"]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 34.0
+offset_right = 1106.0
+offset_bottom = 220.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/turnui/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera/turnui/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Camera/turnui/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "turn:"
+
+[node name="Label2" type="Label" parent="Camera/turnui/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "999"
+
+[node name="Button" type="Button" parent="Camera/turnui"]
+layout_mode = 0
+offset_left = 1001.0
+offset_top = 238.0
+offset_right = 1077.0
+offset_bottom = 269.0
+text = "end turn"
+
+[connection signal="pressed" from="Camera/turnui/Button" to="Camera/turnui" method="_on_button_pressed"]
+
+[editable path="terrainmap"]
+[editable path="Camera/tileinformationui/terrainui/terrainmap"]

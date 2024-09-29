@@ -1,0 +1,538 @@
+[gd_scene load_steps=26 format=3 uid="uid://blog0xtj1mbt6"]
+
+[ext_resource type="TileSet" uid="uid://nbeppx6d8itx" path="res://maptileset.tres" id="1_wwg4v"]
+[ext_resource type="Texture2D" uid="uid://om2olvbj7jnm" path="res://sprites/terrain/road.png" id="3_podct"]
+[ext_resource type="Texture2D" uid="uid://cydu4pd1olaik" path="res://sprites/editor/tile/plains.tres" id="5_1qri8"]
+[ext_resource type="Texture2D" uid="uid://bs3ijsfhupx7j" path="res://sprites/editor/tile/road.tres" id="6_4m2f4"]
+[ext_resource type="Texture2D" uid="uid://bq3ppyiialum" path="res://sprites/editor/tile/hills.tres" id="8_vpjb5"]
+[ext_resource type="Texture2D" uid="uid://dkp7c0wmjjmbx" path="res://sprites/editor/tile/mountains.tres" id="9_gnpcu"]
+[ext_resource type="Texture2D" uid="uid://bq3nnd6upvm5d" path="res://sprites/editor/tile/desert.tres" id="10_662uy"]
+[ext_resource type="Script" path="res://terrain.gd" id="11_gmydu"]
+[ext_resource type="Texture2D" uid="uid://cpfvwriutddqj" path="res://sprites/editor/tile/depletedoredeposit.tres" id="11_hcck6"]
+[ext_resource type="Texture2D" uid="uid://bmdi0hooyi01o" path="res://sprites/editor/tile/oredeposit.tres" id="12_op6tt"]
+[ext_resource type="FontFile" uid="uid://c0cavbidfs63h" path="res://Silver.ttf" id="13_1toki"]
+[ext_resource type="Texture2D" uid="uid://bb6w2hb0gr7f4" path="res://sprites/editor/tile/enrichedoredeposit.tres" id="13_xe5yu"]
+[ext_resource type="Texture2D" uid="uid://clhkibv2cu2xp" path="res://sprites/editor/tile/sea.tres" id="14_klq24"]
+[ext_resource type="PackedScene" uid="uid://cno8peo5s40wp" path="res://moveline.tscn" id="14_pf5p5"]
+[ext_resource type="Theme" uid="uid://cr2cbnp2fwlfc" path="res://maintheme.tres" id="15_64oh8"]
+[ext_resource type="PackedScene" uid="uid://bx5d3eia27fw0" path="res://movetile.tscn" id="15_r25jp"]
+[ext_resource type="PackedScene" uid="uid://djbrcv5275yvv" path="res://selecticon.tscn" id="16_shree"]
+[ext_resource type="Texture2D" uid="uid://ck0cglui1pw2o" path="res://sprites/318_select_select.png" id="17_qdw3c"]
+[ext_resource type="Texture2D" uid="uid://caulvu5fhj5p5" path="res://sprites/229_selectOrange_selectOrange.png" id="18_nv4i8"]
+[ext_resource type="Texture2D" uid="uid://b11x6pcixwh8k" path="res://sprites/396_selectMixed_selectMixed.png" id="19_b36ub"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5m6b"]
+atlas = ExtResource("3_podct")
+region = Rect2(112, 168, 56, 56)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v3dtk"]
+texture = ExtResource("17_qdw3c")
+texture_region_size = Vector2i(56, 56)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m7w10"]
+texture = ExtResource("18_nv4i8")
+texture_region_size = Vector2i(56, 56)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fe58l"]
+texture = ExtResource("19_b36ub")
+texture_region_size = Vector2i(56, 56)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_r5wos"]
+tile_size = Vector2i(56, 56)
+sources/0 = SubResource("TileSetAtlasSource_v3dtk")
+sources/1 = SubResource("TileSetAtlasSource_m7w10")
+sources/2 = SubResource("TileSetAtlasSource_fe58l")
+
+[node name="mainbattle" type="Node2D"]
+y_sort_enabled = true
+
+[node name="terrain" type="TileMap" parent="."]
+tile_set = ExtResource("1_wwg4v")
+format = 2
+layer_0/name = "groundandwater"
+layer_1/name = "complexterrain"
+layer_1/enabled = false
+layer_1/tile_data = PackedInt32Array(524294, 1, 0, 524291, 65537, 0, 393217, 131073, 0, 196610, 1, 0, 524289, 131075, 0)
+layer_2/name = "road"
+layer_2/enabled = false
+layer_2/tile_data = PackedInt32Array(458759, 65538, 3, 458760, 131074, 3, 458761, 131074, 3, 458762, 131074, 3, 458763, 131074, 3, 458764, 131074, 3, 458765, 131074, 3, 458766, 196610, 3)
+layer_3/name = "bridge"
+layer_3/enabled = false
+layer_3/tile_data = PackedInt32Array(458761, 131082, 2)
+script = ExtResource("11_gmydu")
+
+[node name="line" type="Line2D" parent="terrain"]
+points = PackedVector2Array(161, 98, 873, 137, 763, 452, 199, 389)
+closed = true
+width = 5.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+visible = false
+
+[node name="buildings" type="Node2D" parent="."]
+
+[node name="units" type="Node2D" parent="."]
+
+[node name="Camera" type="Camera2D" parent="."]
+z_index = 2
+anchor_mode = 0
+
+[node name="Label" type="Label" parent="Camera"]
+offset_right = 204.0
+offset_bottom = 63.0
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("13_1toki")
+theme_override_font_sizes/font_size = 57
+text = "11字体有点小"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Camera"]
+offset_top = 45.0
+offset_right = 40.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("13_1toki")
+theme_override_font_sizes/font_size = 57
+text = "22"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="Camera"]
+offset_left = 1.0
+offset_top = 94.0
+offset_right = 41.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("13_1toki")
+theme_override_font_sizes/font_size = 57
+text = "33"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="Camera"]
+offset_left = 1.0
+offset_top = 140.0
+offset_right = 41.0
+offset_bottom = 203.0
+theme_override_fonts/font = ExtResource("13_1toki")
+theme_override_font_sizes/font_size = 57
+text = "44"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="Camera"]
+offset_left = 2.0
+offset_top = 186.0
+offset_right = 42.0
+offset_bottom = 249.0
+theme_override_fonts/font = ExtResource("13_1toki")
+theme_override_font_sizes/font_size = 57
+text = "55"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label6" type="Label" parent="Camera"]
+offset_left = 2.0
+offset_top = 237.0
+offset_right = 42.0
+offset_bottom = 300.0
+theme_override_fonts/font = ExtResource("13_1toki")
+theme_override_font_sizes/font_size = 57
+text = "66"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label7" type="Label" parent="Camera"]
+offset_left = 3.0
+offset_top = 292.0
+offset_right = 43.0
+offset_bottom = 355.0
+theme_override_fonts/font = ExtResource("13_1toki")
+theme_override_font_sizes/font_size = 57
+text = "77"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label8" type="Label" parent="Camera"]
+offset_left = 3.0
+offset_top = 349.0
+offset_right = 43.0
+offset_bottom = 412.0
+theme_override_fonts/font = ExtResource("13_1toki")
+theme_override_font_sizes/font_size = 57
+text = "88"
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera"]
+visible = false
+offset_right = 441.0
+offset_bottom = 268.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TabContainer" type="TabContainer" parent="Camera"]
+offset_left = 840.0
+offset_top = 14.0
+offset_right = 1108.0
+offset_bottom = 281.0
+theme = ExtResource("15_64oh8")
+
+[node name="Grid" type="GridContainer" parent="Camera/TabContainer"]
+clip_contents = true
+layout_mode = 2
+columns = 4
+
+[node name="Button" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+icon = ExtResource("5_1qri8")
+
+[node name="Button2" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+icon = ExtResource("6_4m2f4")
+
+[node name="Button3" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+icon = SubResource("AtlasTexture_j5m6b")
+
+[node name="Button4" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+icon = ExtResource("8_vpjb5")
+
+[node name="Button5" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+icon = ExtResource("9_gnpcu")
+
+[node name="Button6" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+icon = ExtResource("10_662uy")
+
+[node name="Button7" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+icon = ExtResource("11_hcck6")
+
+[node name="Button8" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+icon = ExtResource("12_op6tt")
+
+[node name="Button9" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+icon = ExtResource("13_xe5yu")
+
+[node name="Button10" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+icon = ExtResource("14_klq24")
+
+[node name="Button11" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button12" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button13" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button14" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button15" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button16" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button17" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button18" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button19" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button20" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button21" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button22" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button23" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button24" type="Button" parent="Camera/TabContainer/Grid"]
+layout_mode = 2
+theme = ExtResource("15_64oh8")
+
+[node name="Button" type="Button" parent="Camera/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="terrainui" type="Control" parent="Camera"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 561.0
+offset_right = 21.0
+offset_bottom = 561.0
+
+[node name="Panel" type="Panel" parent="Camera/terrainui"]
+layout_mode = 0
+offset_right = 448.0
+offset_bottom = 73.0
+
+[node name="TileMap" type="TileMap" parent="Camera/terrainui"]
+position = Vector2(14, 10)
+tile_set = ExtResource("1_wwg4v")
+format = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera/terrainui"]
+visible = false
+position = Vector2(164, 598)
+
+[node name="Label" type="Label" parent="Camera/terrainui"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 12.0
+offset_right = 213.0
+offset_bottom = 35.0
+text = "terrain"
+
+[node name="Label2" type="Label" parent="Camera/terrainui"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 35.0
+offset_right = 213.0
+offset_bottom = 58.0
+text = "terraindescription"
+
+[node name="movetextui" type="Control" parent="Camera"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 35.0
+offset_bottom = 34.0
+mouse_filter = 2
+
+[node name="start" type="Control" parent="Camera/movetextui"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="SpinBox" type="SpinBox" parent="Camera/movetextui/start"]
+layout_mode = 0
+offset_left = 912.0
+offset_top = 196.0
+offset_right = 995.063
+offset_bottom = 227.0
+value = 1.0
+update_on_text_changed = true
+
+[node name="SpinBox2" type="SpinBox" parent="Camera/movetextui/start"]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 196.0
+offset_right = 1099.06
+offset_bottom = 227.0
+value = 1.0
+update_on_text_changed = true
+
+[node name="Label" type="Label" parent="Camera/movetextui/start"]
+layout_mode = 0
+offset_left = 892.0
+offset_top = 199.0
+offset_right = 932.0
+offset_bottom = 222.0
+text = "x"
+
+[node name="Label2" type="Label" parent="Camera/movetextui/start"]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 198.0
+offset_right = 1040.0
+offset_bottom = 221.0
+text = "y"
+
+[node name="Label3" type="Label" parent="Camera/movetextui/start"]
+layout_mode = 0
+offset_left = 846.0
+offset_top = 199.0
+offset_right = 886.0
+offset_bottom = 222.0
+text = "start"
+
+[node name="goal" type="Control" parent="Camera/movetextui"]
+anchors_preset = 0
+offset_top = 37.0
+offset_right = 40.0
+offset_bottom = 77.0
+mouse_filter = 2
+
+[node name="SpinBox" type="SpinBox" parent="Camera/movetextui/goal"]
+layout_mode = 0
+offset_left = 912.0
+offset_top = 196.0
+offset_right = 995.063
+offset_bottom = 227.0
+update_on_text_changed = true
+
+[node name="SpinBox2" type="SpinBox" parent="Camera/movetextui/goal"]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 196.0
+offset_right = 1099.06
+offset_bottom = 227.0
+update_on_text_changed = true
+
+[node name="Label" type="Label" parent="Camera/movetextui/goal"]
+layout_mode = 0
+offset_left = 892.0
+offset_top = 199.0
+offset_right = 932.0
+offset_bottom = 222.0
+text = "x"
+
+[node name="Label2" type="Label" parent="Camera/movetextui/goal"]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 198.0
+offset_right = 1040.0
+offset_bottom = 221.0
+text = "y"
+
+[node name="Label3" type="Label" parent="Camera/movetextui/goal"]
+layout_mode = 0
+offset_left = 846.0
+offset_top = 199.0
+offset_right = 886.0
+offset_bottom = 222.0
+text = "goal"
+
+[node name="pathfindbtn" type="Button" parent="Camera/movetextui"]
+layout_mode = 0
+offset_left = 954.0
+offset_top = 280.0
+offset_right = 1036.0
+offset_bottom = 311.0
+text = "开始寻路"
+
+[node name="movetileui" type="Control" parent="Camera"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SpinBox" type="SpinBox" parent="Camera/movetileui"]
+layout_mode = 0
+offset_left = 914.0
+offset_top = 318.0
+offset_right = 997.063
+offset_bottom = 349.0
+value = 2.0
+update_on_text_changed = true
+
+[node name="SpinBox2" type="SpinBox" parent="Camera/movetileui"]
+layout_mode = 0
+offset_left = 1015.0
+offset_top = 318.0
+offset_right = 1098.06
+offset_bottom = 349.0
+value = 2.0
+update_on_text_changed = true
+
+[node name="SpinBox3" type="SpinBox" parent="Camera/movetileui"]
+layout_mode = 0
+offset_left = 915.0
+offset_top = 356.0
+offset_right = 998.063
+offset_bottom = 387.0
+value = 6.0
+update_on_text_changed = true
+
+[node name="Label" type="Label" parent="Camera/movetileui"]
+layout_mode = 0
+offset_left = 898.0
+offset_top = 321.0
+offset_right = 938.0
+offset_bottom = 344.0
+text = "x"
+
+[node name="Label2" type="Label" parent="Camera/movetileui"]
+layout_mode = 0
+offset_left = 1001.0
+offset_top = 320.0
+offset_right = 1041.0
+offset_bottom = 343.0
+text = "y"
+
+[node name="Label3" type="Label" parent="Camera/movetileui"]
+layout_mode = 0
+offset_left = 844.0
+offset_top = 323.0
+offset_right = 884.0
+offset_bottom = 346.0
+text = "start"
+
+[node name="Label4" type="Label" parent="Camera/movetileui"]
+layout_mode = 0
+offset_left = 843.0
+offset_top = 361.0
+offset_right = 890.0
+offset_bottom = 384.0
+text = "speed"
+
+[node name="movetilebtn" type="Button" parent="Camera/movetileui"]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 404.0
+offset_right = 1032.0
+offset_bottom = 435.0
+text = "显示范围"
+
+[node name="endturnbtn" type="Button" parent="Camera"]
+offset_left = 975.0
+offset_top = 550.0
+offset_right = 1130.0
+offset_bottom = 630.0
+text = "endturn"
+
+[node name="moveline" parent="." instance=ExtResource("14_pf5p5")]
+
+[node name="movetile" parent="." instance=ExtResource("15_r25jp")]
+
+[node name="selectui" type="Node2D" parent="."]
+
+[node name="selecticon" parent="selectui" instance=ExtResource("16_shree")]
+visible = false
+
+[node name="selecttile" type="Node2D" parent="selectui"]
+
+[node name="selecttilemap" type="TileMap" parent="selectui"]
+tile_set = SubResource("TileSet_r5wos")
+format = 2
+
+[connection signal="button_down" from="Camera/movetextui/pathfindbtn" to="terrain" method="_on_pathfindbtn_button_down"]
+[connection signal="button_down" from="Camera/movetileui/movetilebtn" to="terrain" method="_on_movetilebtn_button_down"]
+[connection signal="button_down" from="Camera/endturnbtn" to="terrain" method="_on_endturnbtn_button_down"]

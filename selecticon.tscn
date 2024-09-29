@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://djbrcv5275yvv"]
+
+[ext_resource type="Texture2D" uid="uid://d0adk43uuxv1i" path="res://sprites/551_marker_marker.png" id="1_frxem"]
+
+[node name="selecticon" type="Sprite2D"]
+modulate = Color(1, 0, 0.0784314, 1)
+texture = ExtResource("1_frxem")

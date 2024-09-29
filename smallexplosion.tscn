@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://dgmif3li04uds"]
+
+[ext_resource type="Script" path="res://smallexplosion.gd" id="1_hfan6"]
+[ext_resource type="Texture2D" uid="uid://dnyl8lbkhcwot" path="res://sprites/211_small_explosion_small_explosion.png" id="2_c7v5i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84kiq"]
+atlas = ExtResource("2_c7v5i")
+region = Rect2(0, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oiyn"]
+atlas = ExtResource("2_c7v5i")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc63f"]
+atlas = ExtResource("2_c7v5i")
+region = Rect2(112, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbxlt"]
+atlas = ExtResource("2_c7v5i")
+region = Rect2(168, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pknxj"]
+atlas = ExtResource("2_c7v5i")
+region = Rect2(0, 56, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h12cy"]
+atlas = ExtResource("2_c7v5i")
+region = Rect2(56, 56, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7npto"]
+atlas = ExtResource("2_c7v5i")
+region = Rect2(112, 56, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr58q"]
+atlas = ExtResource("2_c7v5i")
+region = Rect2(168, 56, 56, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p8dcv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84kiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oiyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc63f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbxlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pknxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h12cy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7npto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr58q")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="smallexplosion" type="Node2D"]
+script = ExtResource("1_hfan6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p8dcv")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

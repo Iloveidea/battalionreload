@@ -1,0 +1,35 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="battalionreload"
+run/main_scene="res://menu.tscn"
+config/features=PackedStringArray("4.2", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+AllSIGNAL="*res://ALLSIGNAL.gd"
+GAMEDATA="*res://GAMEDATA.gd"
+Mapclass="*res://mapclass.gd"
+G="*res://G.gd"
+Gamemap="*res://gamemap.gd"
+Consolecommands2="*res://consolecommands2.gd"
+Panku="*res://addons/panku_console/console.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/panku_console/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"

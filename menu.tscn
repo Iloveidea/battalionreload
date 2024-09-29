@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://cie4pfke8q6df"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_87ux2"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_87ux2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -86.0
+offset_bottom = 66.0
+grow_horizontal = 0
+
+[node name="CampaignBtn" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Campaign"
+
+[node name="ScenarioBtn" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Scenario"
+
+[node name="SelectmapBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Selectmap
+"
+
+[node name="MapEditerBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "MapEditer"
+
+[node name="OptionBtn" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Option"
+
+[node name="QuitBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(500, 500)
+ok_button_text = "打开"
+file_mode = 0
+filters = PackedStringArray("*.bmap")
+
+[connection signal="pressed" from="VBoxContainer/CampaignBtn" to="." method="_on_campaign_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScenarioBtn" to="." method="_on_scenario_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/SelectmapBtn" to="." method="_on_selectmap_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/MapEditerBtn" to="." method="_on_map_editer_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionBtn" to="." method="_on_option_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
+[connection signal="canceled" from="FileDialog" to="." method="_on_file_dialog_canceled"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

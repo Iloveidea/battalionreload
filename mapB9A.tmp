@@ -1,0 +1,180 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy71rh26fhla8"]
+
+[ext_resource type="PackedScene" uid="uid://dhmmbu1l4ku2k" path="res://terrainmap.tscn" id="1_im6ut"]
+[ext_resource type="Script" path="res://mapeditor.gd" id="1_ygoad"]
+
+[node name="mapeditor" type="Node2D"]
+script = ExtResource("1_ygoad")
+
+[node name="terrainmap" parent="." instance=ExtResource("1_im6ut")]
+metadata/_edit_lock_ = true
+
+[node name="TileMap" parent="terrainmap" index="0"]
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 131073, 0, 0, 196609, 0, 0, 1, 0, 0, 65537, 0, 0, 131072, 0, 0, 196608, 0, 0, 2, 0, 0, 65538, 0, 0, 131074, 0, 0, 196610, 0, 0)
+
+[node name="buildings" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="units" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="border" type="Line2D" parent="."]
+points = PackedVector2Array(188, -134, 518, -143, 515, 99, 204, 77)
+closed = true
+width = 5.0
+default_color = Color(0, 0.313726, 1, 0.619608)
+
+[node name="border2" type="Line2D" parent="."]
+points = PackedVector2Array(219, 328, 513, 339, 490, 571, 176, 551)
+closed = true
+width = 5.0
+default_color = Color(1, 0, 0.0627451, 0.509804)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Control" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 74.0
+offset_bottom = 60.0
+mouse_filter = 2
+
+[node name="TabContainer" type="TabContainer" parent="Camera2D/Control"]
+layout_mode = 0
+offset_left = 597.0
+offset_top = 3.0
+offset_right = 1147.0
+offset_bottom = 328.0
+
+[node name="map" type="ScrollContainer" parent="Camera2D/Control/TabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Control/TabContainer/map"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/Control/TabContainer/map/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="x" type="Label" parent="Camera2D/Control/TabContainer/map/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "x:"
+
+[node name="xnum" type="SpinBox" parent="Camera2D/Control/TabContainer/map/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 65535.0
+value = 1.0
+
+[node name="y" type="Label" parent="Camera2D/Control/TabContainer/map/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "y:"
+
+[node name="ynum" type="SpinBox" parent="Camera2D/Control/TabContainer/map/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 65535.0
+value = 1.0
+
+[node name="mapxybtn" type="Button" parent="Camera2D/Control/TabContainer/map/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "OK"
+
+[node name="player" type="ScrollContainer" parent="Camera2D/Control/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Control/TabContainer/player"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/Control/TabContainer/player/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Camera2D/Control/TabContainer/player/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "playernum"
+
+[node name="SpinBox" type="SpinBox" parent="Camera2D/Control/TabContainer/player/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+min_value = 2.0
+max_value = 6.0
+value = 2.0
+update_on_text_changed = true
+
+[node name="OptionButton" type="OptionButton" parent="Camera2D/Control/TabContainer/player/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Camera2D/Control/TabContainer/player/VBoxContainer"]
+layout_mode = 2
+columns = 9
+
+[node name="tile" type="ScrollContainer" parent="Camera2D/Control/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Control/TabContainer/tile"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Camera2D/Control/TabContainer/tile/VBoxContainer"]
+layout_mode = 2
+columns = 8
+
+[node name="unit" type="ScrollContainer" parent="Camera2D/Control/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Control/TabContainer/unit"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="Camera2D/Control/TabContainer/unit/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Camera2D/Control/TabContainer/unit/VBoxContainer"]
+layout_mode = 2
+columns = 8
+
+[node name="building" type="ScrollContainer" parent="Camera2D/Control/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Control/TabContainer/building"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="Camera2D/Control/TabContainer/building/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Camera2D/Control/TabContainer/building/VBoxContainer"]
+layout_mode = 2
+columns = 8
+
+[node name="Control" type="Control" parent="Camera2D/Control"]
+anchors_preset = 0
+offset_left = 523.0
+offset_top = 13.0
+offset_right = 563.0
+offset_bottom = 53.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Camera2D/Control/Control"]
+layout_mode = 0
+offset_left = -17.0
+offset_top = 29.0
+offset_right = 47.0
+offset_bottom = 52.0
+text = "1111111"
+
+[node name="Label2" type="Label" parent="Camera2D/Control/Control"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 55.0
+offset_right = 39.0
+offset_bottom = 78.0
+text = "222222"
+
+[connection signal="pressed" from="Camera2D/Control/TabContainer/map/VBoxContainer/HBoxContainer/mapxybtn" to="." method="_on_mapxybtn_pressed"]
+[connection signal="value_changed" from="Camera2D/Control/TabContainer/player/VBoxContainer/HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]
+
+[editable path="terrainmap"]

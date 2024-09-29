@@ -1,0 +1,481 @@
+[gd_scene load_steps=44 format=3 uid="uid://6yrj06q00wp4"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_n1b0w"]
+[ext_resource type="PackedScene" uid="uid://dhmmbu1l4ku2k" path="res://terrainmap.tscn" id="2_sbj6k"]
+[ext_resource type="PackedScene" uid="uid://c1yw6le2i0pq5" path="res://building.tscn" id="3_no6q2"]
+[ext_resource type="Script" path="res://tileinformationui.gd" id="3_uo1f3"]
+[ext_resource type="Script" path="res://controllers.gd" id="3_xfx7t"]
+[ext_resource type="Script" path="res://turnui.gd" id="4_28a44"]
+[ext_resource type="PackedScene" uid="uid://bchd85iu6yxcy" path="res://unit.tscn" id="4_hpc13"]
+[ext_resource type="Texture2D" uid="uid://dno5g5cg0ksrk" path="res://sprites/473_bg_air_bg_air.png" id="6_j7t80"]
+[ext_resource type="Shader" path="res://unitbg.gdshader" id="6_jk407"]
+[ext_resource type="Script" path="res://unitbuilder.gd" id="6_rk7eb"]
+[ext_resource type="Texture2D" uid="uid://c2mr15l10hsu5" path="res://sprites/unitactionuibtn/417_unitExtract_unitExtract.png" id="6_vuji3"]
+[ext_resource type="Texture2D" uid="uid://bj7ptw43w3oxa" path="res://sprites/unitactionuibtn/340_unitBuild_unitBuild.png" id="7_1ivm2"]
+[ext_resource type="Texture2D" uid="uid://dys44s6gxxguo" path="res://sprites/unitactionuibtn/410_unitAlbatross_unitAlbatross.png" id="8_s6rtf"]
+[ext_resource type="Texture2D" uid="uid://lgadtbgs6cn5" path="res://sprites/unitactionuibtn/496_unitLeviathan_unitLeviathan.png" id="9_hjmxd"]
+[ext_resource type="Texture2D" uid="uid://dof3hohpcm3x4" path="res://sprites/unitactionuibtn/449_unitUnload_unitUnload.png" id="10_sx8aq"]
+[ext_resource type="Texture2D" uid="uid://183q2is71jb8" path="res://sprites/unitactionuibtn/555_unitRepair_unitRepair.png" id="11_3360h"]
+[ext_resource type="Texture2D" uid="uid://c1r5ho8gxqsbc" path="res://sprites/terraintrait/AirProficiency.png" id="13_re4vv"]
+[ext_resource type="Texture2D" uid="uid://b6gcm6khvdl8x" path="res://sprites/terraintrait/Barbed.png" id="14_i70jn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8hsr"]
+atlas = ExtResource("6_vuji3")
+region = Rect2(36, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cberp"]
+atlas = ExtResource("6_vuji3")
+region = Rect2(108, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obvmy"]
+atlas = ExtResource("6_vuji3")
+region = Rect2(72, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73m8i"]
+atlas = ExtResource("6_vuji3")
+region = Rect2(0, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fskx"]
+atlas = ExtResource("7_1ivm2")
+region = Rect2(36, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3hjp"]
+atlas = ExtResource("7_1ivm2")
+region = Rect2(108, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_321mu"]
+atlas = ExtResource("7_1ivm2")
+region = Rect2(72, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3yki"]
+atlas = ExtResource("7_1ivm2")
+region = Rect2(0, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qshxw"]
+atlas = ExtResource("8_s6rtf")
+region = Rect2(36, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5rnh"]
+atlas = ExtResource("8_s6rtf")
+region = Rect2(108, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pbge"]
+atlas = ExtResource("8_s6rtf")
+region = Rect2(72, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx268"]
+atlas = ExtResource("8_s6rtf")
+region = Rect2(0, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arn11"]
+atlas = ExtResource("9_hjmxd")
+region = Rect2(36, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7knb0"]
+atlas = ExtResource("9_hjmxd")
+region = Rect2(108, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt0cw"]
+atlas = ExtResource("9_hjmxd")
+region = Rect2(72, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwj30"]
+atlas = ExtResource("9_hjmxd")
+region = Rect2(0, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8oqf"]
+atlas = ExtResource("10_sx8aq")
+region = Rect2(36, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7a2e"]
+atlas = ExtResource("10_sx8aq")
+region = Rect2(108, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqw07"]
+atlas = ExtResource("10_sx8aq")
+region = Rect2(72, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvhi6"]
+atlas = ExtResource("10_sx8aq")
+region = Rect2(0, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdv7j"]
+atlas = ExtResource("11_3360h")
+region = Rect2(36, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7mfs"]
+atlas = ExtResource("11_3360h")
+region = Rect2(108, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn1q1"]
+atlas = ExtResource("11_3360h")
+region = Rect2(72, 0, 36, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uayj4"]
+atlas = ExtResource("11_3360h")
+region = Rect2(0, 0, 36, 29)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2qggh"]
+shader = ExtResource("6_jk407")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed = 0.3
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_n1b0w")
+
+[node name="terrainmap" parent="." instance=ExtResource("2_sbj6k")]
+
+[node name="line" type="Line2D" parent="."]
+points = PackedVector2Array(161, 98, 873, 137, 763, 452, 199, 389)
+closed = true
+width = 5.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="building" type="Node2D" parent="."]
+
+[node name="building" parent="building" instance=ExtResource("3_no6q2")]
+visible = false
+
+[node name="unit" type="Node2D" parent="."]
+
+[node name="unit" parent="unit" instance=ExtResource("4_hpc13")]
+visible = false
+
+[node name="controllers" type="Node2D" parent="."]
+script = ExtResource("3_xfx7t")
+
+[node name="movetile" type="Node2D" parent="controllers"]
+
+[node name="pathline" type="Line2D" parent="controllers"]
+visible = false
+points = PackedVector2Array(229, 10, 415, 13)
+default_color = Color(1, 1, 1, 0.419608)
+
+[node name="cursor" type="Node2D" parent="controllers"]
+visible = false
+
+[node name="Line2D" type="Line2D" parent="controllers/cursor"]
+points = PackedVector2Array(-20, -20, 18, 21, 21, -23, -19, 18)
+default_color = Color(1, 0, 0.133333, 0.392157)
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="unitactionui" type="Control" parent="Camera"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 269.0
+offset_right = 61.0
+offset_bottom = 309.0
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="VBox" type="VBoxContainer" parent="Camera/unitactionui"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
+
+[node name="extractbtn" type="TextureButton" parent="Camera/unitactionui/VBox"]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+texture_normal = SubResource("AtlasTexture_j8hsr")
+texture_pressed = SubResource("AtlasTexture_cberp")
+texture_hover = SubResource("AtlasTexture_obvmy")
+texture_disabled = SubResource("AtlasTexture_73m8i")
+metadata/_edit_lock_ = true
+
+[node name="buildbtn" type="TextureButton" parent="Camera/unitactionui/VBox"]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+texture_normal = SubResource("AtlasTexture_2fskx")
+texture_pressed = SubResource("AtlasTexture_r3hjp")
+texture_hover = SubResource("AtlasTexture_321mu")
+texture_disabled = SubResource("AtlasTexture_g3yki")
+metadata/_edit_lock_ = true
+
+[node name="albatrossbtn" type="TextureButton" parent="Camera/unitactionui/VBox"]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+texture_normal = SubResource("AtlasTexture_qshxw")
+texture_pressed = SubResource("AtlasTexture_x5rnh")
+texture_hover = SubResource("AtlasTexture_5pbge")
+texture_disabled = SubResource("AtlasTexture_kx268")
+metadata/_edit_lock_ = true
+
+[node name="leviathanbtn" type="TextureButton" parent="Camera/unitactionui/VBox"]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+texture_normal = SubResource("AtlasTexture_arn11")
+texture_pressed = SubResource("AtlasTexture_7knb0")
+texture_hover = SubResource("AtlasTexture_dt0cw")
+texture_disabled = SubResource("AtlasTexture_mwj30")
+metadata/_edit_lock_ = true
+
+[node name="unloadbtn" type="TextureButton" parent="Camera/unitactionui/VBox"]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+texture_normal = SubResource("AtlasTexture_r8oqf")
+texture_pressed = SubResource("AtlasTexture_t7a2e")
+texture_hover = SubResource("AtlasTexture_iqw07")
+texture_disabled = SubResource("AtlasTexture_jvhi6")
+metadata/_edit_lock_ = true
+
+[node name="repairbtn" type="TextureButton" parent="Camera/unitactionui/VBox"]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+texture_normal = SubResource("AtlasTexture_vdv7j")
+texture_pressed = SubResource("AtlasTexture_p7mfs")
+texture_hover = SubResource("AtlasTexture_dn1q1")
+texture_disabled = SubResource("AtlasTexture_uayj4")
+metadata/_edit_lock_ = true
+
+[node name="tileinformationui" type="Control" parent="Camera"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("3_uo1f3")
+
+[node name="terrainui" type="Panel" parent="Camera/tileinformationui"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 480.0
+offset_right = 742.0
+offset_bottom = 545.0
+
+[node name="terrainmap" parent="Camera/tileinformationui/terrainui" instance=ExtResource("2_sbj6k")]
+position = Vector2(2, 2)
+
+[node name="TileMap" parent="Camera/tileinformationui/terrainui/terrainmap" index="0"]
+position = Vector2(3, 2)
+layer_0/tile_data = PackedInt32Array(0, 0, 0)
+
+[node name="building" type="Control" parent="Camera/tileinformationui/terrainui"]
+anchors_preset = 0
+offset_left = 33.0
+offset_top = 30.0
+offset_right = 73.0
+offset_bottom = 70.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Camera/tileinformationui/terrainui"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 5.0
+offset_right = 126.0
+offset_bottom = 28.0
+tooltip_text = "45646"
+mouse_filter = 0
+
+[node name="Label2" type="Label" parent="Camera/tileinformationui/terrainui"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 392.0
+offset_bottom = 55.0
+
+[node name="traitbox" type="HBoxContainer" parent="Camera/tileinformationui/terrainui"]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 11.0
+offset_right = 792.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Camera/tileinformationui/terrainui/traitbox"]
+visible = false
+layout_mode = 2
+texture = ExtResource("13_re4vv")
+
+[node name="TextureRect2" type="TextureRect" parent="Camera/tileinformationui/terrainui/traitbox"]
+visible = false
+layout_mode = 2
+texture = ExtResource("14_i70jn")
+
+[node name="unitui" type="Panel" parent="Camera/tileinformationui"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 554.0
+offset_right = 743.0
+offset_bottom = 620.0
+
+[node name="unit" type="Control" parent="Camera/tileinformationui/unitui"]
+anchors_preset = 0
+offset_left = 33.0
+offset_top = 30.0
+offset_right = 73.0
+offset_bottom = 70.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Camera/tileinformationui/unitui"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 5.0
+offset_right = 126.0
+offset_bottom = 28.0
+
+[node name="Label2" type="Label" parent="Camera/tileinformationui/unitui"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 392.0
+offset_bottom = 55.0
+
+[node name="traitbox" type="HBoxContainer" parent="Camera/tileinformationui/unitui"]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 9.0
+offset_right = 1324.0
+offset_bottom = 29.0
+scale = Vector2(2, 2)
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Camera/tileinformationui/unitui/traitbox"]
+visible = false
+layout_mode = 2
+texture = ExtResource("13_re4vv")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="Camera/tileinformationui/unitui/traitbox"]
+visible = false
+layout_mode = 2
+text = "100/100"
+
+[node name="turnui" type="Control" parent="Camera"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("4_28a44")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="Camera/turnui"]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 34.0
+offset_right = 1106.0
+offset_bottom = 220.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/turnui/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera/turnui/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Camera/turnui/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "turn:"
+
+[node name="Label2" type="Label" parent="Camera/turnui/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "999"
+
+[node name="Button" type="Button" parent="Camera/turnui"]
+layout_mode = 0
+offset_left = 1001.0
+offset_top = 238.0
+offset_right = 1077.0
+offset_bottom = 269.0
+focus_mode = 0
+text = "end turn"
+
+[node name="unitbuilder" type="Window" parent="."]
+position = Vector2i(0, 36)
+size = Vector2i(1888, 1055)
+visible = false
+wrap_controls = true
+transient = true
+exclusive = true
+script = ExtResource("6_rk7eb")
+
+[node name="Scroll" type="ScrollContainer" parent="unitbuilder"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -95.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="CenterContainer" parent="unitbuilder/Scroll"]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="unitbuilder/Scroll/Center"]
+layout_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="unitbuilder/Scroll/Center/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="unitbg" type="TextureRect" parent="unitbuilder/Scroll/Center/VBox/HBox"]
+material = SubResource("ShaderMaterial_2qggh")
+custom_minimum_size = Vector2(107, 110)
+layout_mode = 2
+texture = ExtResource("6_j7t80")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="unitbuilder/Scroll/Center/VBox/HBox/unitbg"]
+custom_minimum_size = Vector2(110, 120)
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 100.0
+text = "unitname"
+horizontal_alignment = 1
+vertical_alignment = 2
+clip_text = true
+
+[node name="VBox" type="VBoxContainer" parent="unitbuilder/Scroll/Center/VBox/HBox"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="unitbuilder/Scroll/Center/VBox/HBox/VBox"]
+layout_mode = 2
+theme_override_constants/margin_right = 500
+
+[node name="VBox2" type="VBoxContainer" parent="unitbuilder/Scroll/Center/VBox/HBox"]
+layout_mode = 2
+
+[node name="cancelbtn" type="Button" parent="unitbuilder/Scroll/Center/VBox/HBox/VBox2"]
+layout_mode = 2
+text = "cancel"
+
+[node name="Label" type="Label" parent="unitbuilder/Scroll/Center/VBox/HBox/VBox2"]
+layout_mode = 2
+text = "resource:"
+
+[node name="Label2" type="Label" parent="unitbuilder/Scroll/Center/VBox/HBox/VBox2"]
+layout_mode = 2
+text = "99999"
+
+[node name="HBox2" type="HBoxContainer" parent="unitbuilder/Scroll/Center/VBox"]
+layout_mode = 2
+
+[node name="Grid" type="GridContainer" parent="unitbuilder/Scroll/Center/VBox/HBox2"]
+layout_mode = 2
+columns = 3
+
+[node name="Grid2" type="GridContainer" parent="unitbuilder/Scroll/Center/VBox/HBox2"]
+layout_mode = 2
+
+[node name="Grid3" type="GridContainer" parent="unitbuilder/Scroll/Center/VBox/HBox2"]
+layout_mode = 2
+columns = 2
+
+[connection signal="pressed" from="Camera/unitactionui/VBox/extractbtn" to="controllers" method="_on_extractbtn_pressed"]
+[connection signal="pressed" from="Camera/unitactionui/VBox/buildbtn" to="controllers" method="_on_buildbtn_pressed"]
+[connection signal="pressed" from="Camera/turnui/Button" to="Camera/turnui" method="_on_button_pressed"]
+[connection signal="pressed" from="unitbuilder/Scroll/Center/VBox/HBox/VBox2/cancelbtn" to="unitbuilder" method="_on_cancelbtn_pressed"]
+
+[editable path="terrainmap"]
+[editable path="Camera/tileinformationui/terrainui/terrainmap"]

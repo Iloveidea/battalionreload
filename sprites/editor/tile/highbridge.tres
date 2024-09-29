@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://d33xp24yy7h04"]
+
+[ext_resource type="Texture2D" uid="uid://dpq63hbo7rd3c" path="res://sprites/terrain/highbridge.png" id="1_tp0sx"]
+
+[resource]
+atlas = ExtResource("1_tp0sx")
+region = Rect2(112, 168, 56, 56)

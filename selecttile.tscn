@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://dle0prbhi36pn"]
+
+[ext_resource type="Texture2D" uid="uid://caulvu5fhj5p5" path="res://sprites/229_selectOrange_selectOrange.png" id="1_1h4r3"]
+[ext_resource type="Script" path="res://selecttile.gd" id="1_030d0"]
+[ext_resource type="Texture2D" uid="uid://ck0cglui1pw2o" path="res://sprites/318_select_select.png" id="2_shhc6"]
+[ext_resource type="Texture2D" uid="uid://b11x6pcixwh8k" path="res://sprites/396_selectMixed_selectMixed.png" id="3_48u4x"]
+[ext_resource type="Texture2D" uid="uid://cm66c7beuuvgn" path="res://sprites/310_attackTargets_attackTargets.png" id="4_rim4u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ua3b"]
+atlas = ExtResource("4_rim4u")
+region = Rect2(0, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axxda"]
+atlas = ExtResource("4_rim4u")
+region = Rect2(112, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxkbf"]
+atlas = ExtResource("4_rim4u")
+region = Rect2(56, 0, 56, 56)
+
+[node name="selecttile" type="Node2D"]
+script = ExtResource("1_030d0")
+
+[node name="select" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(28, 28)
+texture = ExtResource("2_shhc6")
+
+[node name="selectorange" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(28, 28)
+texture = ExtResource("1_1h4r3")
+
+[node name="selectmix" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(28, 28)
+texture = ExtResource("3_48u4x")
+
+[node name="attacktarget-" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(28, 29)
+texture = SubResource("AtlasTexture_1ua3b")
+
+[node name="attacktarget=" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(28, 28)
+texture = SubResource("AtlasTexture_axxda")
+
+[node name="attacktarget+" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(28, 28)
+texture = SubResource("AtlasTexture_rxkbf")
